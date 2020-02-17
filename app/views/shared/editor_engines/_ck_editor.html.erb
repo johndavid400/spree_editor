@@ -1,10 +1,15 @@
-<%= javascript_include_tag 'ckeditor/init' %>
+<%= javascript_include_tag Ckeditor.cdn_url %>
 
 <script>
   $(function() {
     <% ids.each do |id| %>
       if ($("#<%= id %>").length > 0) {
-        CKEDITOR.replace("<%= id %>");
+        CKEDITOR.replace("<%= id %>", {
+          filebrowserBrowseUrl: "/ckeditor/pictures",
+          filebrowserImageBrowseUrl: "/ckeditor/pictures",
+          filebrowserImageUploadUrl: "/ckeditor/pictures",
+          filebrowserUploadUrl: "/ckeditor/pictures",
+        });
       }
     <% end %>
   });
